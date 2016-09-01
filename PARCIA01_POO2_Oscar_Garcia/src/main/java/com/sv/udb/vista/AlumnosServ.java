@@ -50,7 +50,7 @@ public class AlumnosServ extends HttpServlet {
                         obje.setNombAlum(request.getParameter("txtnombrealumno"));
                         obje.setApelAlum(request.getParameter("txtapellidoalumno"));
                         SimpleDateFormat fm = new SimpleDateFormat("dd-MM-yyyy");
-                        obje.setFechNaciAlum(fm.parse(request.getParameter("txtfechaoalumno")));
+                        obje.setFechNaciAlum(fm.parse("31-03-1997"));
                         obje.setMailAlum(request.getParameter("txtemailalumno"));
                         obje.setTeleAlum(request.getParameter("txttelefonooalumno"));
                         obje.setDireAlum(request.getParameter("txtdireccionoalumno"));

@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.sv.udb.modelo;
 
 import java.io.Serializable;
@@ -24,16 +23,15 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Laboratorio
+ * @author root
  */
 @Entity
-@Table(name = "grupos_alumnos", catalog = "parcial01_poo2_oscar_garcia", schema = "")
+@Table(name = "grupos_alumnos", catalog = "PARCIAL01_POO2_Oscar_Garcia", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "GruposAlumnos.findAll", query = "SELECT g FROM GruposAlumnos g"),
-    @NamedQuery(name = "GruposAlumnos.findByCodiGrupAlum", query = "SELECT g FROM GruposAlumnos g WHERE g.codiGrupAlum = :codiGrupAlum"),
-    @NamedQuery(name = "GruposAlumnos.findByEstaGrupAlum", query = "SELECT g FROM GruposAlumnos g WHERE g.estaGrupAlum = :estaGrupAlum")})
+    @NamedQuery(name = "GruposAlumnos.findAll", query = "SELECT g FROM GruposAlumnos g")})
 public class GruposAlumnos implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,13 +41,13 @@ public class GruposAlumnos implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "esta_grup_alum")
-    private char estaGrupAlum;
-    @JoinColumn(name = "codi_grup", referencedColumnName = "codi_grup")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    private Grupos codiGrup;
+    private Character estaGrupAlum;
     @JoinColumn(name = "codi_alum", referencedColumnName = "codi_alum")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Alumnos codiAlum;
+    @JoinColumn(name = "codi_grup", referencedColumnName = "codi_grup")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Grupos codiGrup;
 
     public GruposAlumnos() {
     }
@@ -58,7 +56,7 @@ public class GruposAlumnos implements Serializable {
         this.codiGrupAlum = codiGrupAlum;
     }
 
-    public GruposAlumnos(Integer codiGrupAlum, char estaGrupAlum) {
+    public GruposAlumnos(Integer codiGrupAlum, Character estaGrupAlum) {
         this.codiGrupAlum = codiGrupAlum;
         this.estaGrupAlum = estaGrupAlum;
     }
@@ -71,20 +69,12 @@ public class GruposAlumnos implements Serializable {
         this.codiGrupAlum = codiGrupAlum;
     }
 
-    public char getEstaGrupAlum() {
+    public Character getEstaGrupAlum() {
         return estaGrupAlum;
     }
 
-    public void setEstaGrupAlum(char estaGrupAlum) {
+    public void setEstaGrupAlum(Character estaGrupAlum) {
         this.estaGrupAlum = estaGrupAlum;
-    }
-
-    public Grupos getCodiGrup() {
-        return codiGrup;
-    }
-
-    public void setCodiGrup(Grupos codiGrup) {
-        this.codiGrup = codiGrup;
     }
 
     public Alumnos getCodiAlum() {
@@ -93,6 +83,14 @@ public class GruposAlumnos implements Serializable {
 
     public void setCodiAlum(Alumnos codiAlum) {
         this.codiAlum = codiAlum;
+    }
+
+    public Grupos getCodiGrup() {
+        return codiGrup;
+    }
+
+    public void setCodiGrup(Grupos codiGrup) {
+        this.codiGrup = codiGrup;
     }
 
     @Override

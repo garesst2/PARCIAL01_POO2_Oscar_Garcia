@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.sv.udb.modelo;
 
 import java.io.Serializable;
@@ -33,20 +32,15 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Laboratorio
+ * @author root
  */
 @Entity
-@Table(name = "grupos", catalog = "parcial01_poo2_oscar_garcia", schema = "")
+@Table(name = "grupos", catalog = "PARCIAL01_POO2_Oscar_Garcia", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Grupos.findAll", query = "SELECT g FROM Grupos g"),
-    @NamedQuery(name = "Grupos.findByCodiGrup", query = "SELECT g FROM Grupos g WHERE g.codiGrup = :codiGrup"),
-    @NamedQuery(name = "Grupos.findByNombGrup", query = "SELECT g FROM Grupos g WHERE g.nombGrup = :nombGrup"),
-    @NamedQuery(name = "Grupos.findByFechInicGrup", query = "SELECT g FROM Grupos g WHERE g.fechInicGrup = :fechInicGrup"),
-    @NamedQuery(name = "Grupos.findByFechFinaGrup", query = "SELECT g FROM Grupos g WHERE g.fechFinaGrup = :fechFinaGrup"),
-    @NamedQuery(name = "Grupos.findByHoraInicGrup", query = "SELECT g FROM Grupos g WHERE g.horaInicGrup = :horaInicGrup"),
-    @NamedQuery(name = "Grupos.findByHoraFinaGrup", query = "SELECT g FROM Grupos g WHERE g.horaFinaGrup = :horaFinaGrup")})
+    @NamedQuery(name = "Grupos.findAll", query = "SELECT g FROM Grupos g")})
 public class Grupos implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -78,14 +72,14 @@ public class Grupos implements Serializable {
     @Size(min = 1, max = 5)
     @Column(name = "hora_fina_grup")
     private String horaFinaGrup;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codiGrup", fetch = FetchType.EAGER)
-    private List<GruposAlumnos> gruposAlumnosList;
-    @JoinColumn(name = "codi_prof", referencedColumnName = "codi_prof")
-    @ManyToOne(optional = false, fetch = FetchType.EAGER)
-    private Profesores codiProf;
     @JoinColumn(name = "codi_curs", referencedColumnName = "codi_curs")
     @ManyToOne(optional = false, fetch = FetchType.EAGER)
     private Cursos codiCurs;
+    @JoinColumn(name = "codi_prof", referencedColumnName = "codi_prof")
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Profesores codiProf;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "codiGrup", fetch = FetchType.EAGER)
+    private List<GruposAlumnos> gruposAlumnosList;
 
     public Grupos() {
     }
@@ -151,14 +145,12 @@ public class Grupos implements Serializable {
         this.horaFinaGrup = horaFinaGrup;
     }
 
-    @XmlTransient
-    @JsonIgnore
-    public List<GruposAlumnos> getGruposAlumnosList() {
-        return gruposAlumnosList;
+    public Cursos getCodiCurs() {
+        return codiCurs;
     }
 
-    public void setGruposAlumnosList(List<GruposAlumnos> gruposAlumnosList) {
-        this.gruposAlumnosList = gruposAlumnosList;
+    public void setCodiCurs(Cursos codiCurs) {
+        this.codiCurs = codiCurs;
     }
 
     public Profesores getCodiProf() {
@@ -169,12 +161,14 @@ public class Grupos implements Serializable {
         this.codiProf = codiProf;
     }
 
-    public Cursos getCodiCurs() {
-        return codiCurs;
+    @XmlTransient
+    @JsonIgnore
+    public List<GruposAlumnos> getGruposAlumnosList() {
+        return gruposAlumnosList;
     }
 
-    public void setCodiCurs(Cursos codiCurs) {
-        this.codiCurs = codiCurs;
+    public void setGruposAlumnosList(List<GruposAlumnos> gruposAlumnosList) {
+        this.gruposAlumnosList = gruposAlumnosList;
     }
 
     @Override

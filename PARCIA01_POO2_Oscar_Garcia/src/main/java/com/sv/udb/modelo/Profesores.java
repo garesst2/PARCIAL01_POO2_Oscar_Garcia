@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.sv.udb.modelo;
 
 import java.io.Serializable;
@@ -28,20 +27,15 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Laboratorio
+ * @author root
  */
 @Entity
-@Table(name = "profesores", catalog = "parcial01_poo2_oscar_garcia", schema = "")
+@Table(name = "profesores", catalog = "PARCIAL01_POO2_Oscar_Garcia", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Profesores.findAll", query = "SELECT p FROM Profesores p"),
-    @NamedQuery(name = "Profesores.findByCodiProf", query = "SELECT p FROM Profesores p WHERE p.codiProf = :codiProf"),
-    @NamedQuery(name = "Profesores.findByNombProf", query = "SELECT p FROM Profesores p WHERE p.nombProf = :nombProf"),
-    @NamedQuery(name = "Profesores.findByApelProf", query = "SELECT p FROM Profesores p WHERE p.apelProf = :apelProf"),
-    @NamedQuery(name = "Profesores.findByMailProf", query = "SELECT p FROM Profesores p WHERE p.mailProf = :mailProf"),
-    @NamedQuery(name = "Profesores.findByTeleProf", query = "SELECT p FROM Profesores p WHERE p.teleProf = :teleProf"),
-    @NamedQuery(name = "Profesores.findByDirePro", query = "SELECT p FROM Profesores p WHERE p.direPro = :direPro")})
+    @NamedQuery(name = "Profesores.findAll", query = "SELECT p FROM Profesores p")})
 public class Profesores implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

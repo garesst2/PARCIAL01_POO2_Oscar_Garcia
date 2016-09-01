@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.sv.udb.modelo;
 
 import java.io.Serializable;
@@ -28,18 +27,15 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Laboratorio
+ * @author root
  */
 @Entity
-@Table(name = "cursos", catalog = "parcial01_poo2_oscar_garcia", schema = "")
+@Table(name = "cursos", catalog = "PARCIAL01_POO2_Oscar_Garcia", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cursos.findAll", query = "SELECT c FROM Cursos c"),
-    @NamedQuery(name = "Cursos.findByCodiCurs", query = "SELECT c FROM Cursos c WHERE c.codiCurs = :codiCurs"),
-    @NamedQuery(name = "Cursos.findByNombCurs", query = "SELECT c FROM Cursos c WHERE c.nombCurs = :nombCurs"),
-    @NamedQuery(name = "Cursos.findByDuraCurs", query = "SELECT c FROM Cursos c WHERE c.duraCurs = :duraCurs"),
-    @NamedQuery(name = "Cursos.findByCostCurs", query = "SELECT c FROM Cursos c WHERE c.costCurs = :costCurs")})
+    @NamedQuery(name = "Cursos.findAll", query = "SELECT c FROM Cursos c")})
 public class Cursos implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -3,6 +3,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@page import="com.sv.udb.controlador.AlumnosCtrl"%>
+<%@page import="com.sv.udb.controlador.GruposCtrl"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -38,7 +39,6 @@
                                         <label>Alumno
                                             <input type="text" id="txtnombrealumno" name="txtnombrealumno" placeholder="Nombre Alumno">
                                             <input type="text" id="txtapellidoalumno" name="txtapellidoalumno" placeholder="Apellido Alumno">
-                                            <input type="date" id="txtfechaoalumno" name="txtfechaoalumno" placeholder="Fecha nacimiento Alumno">
                                             <input type="email" id="txtemailalumno" name="txtemailalumno" placeholder="E-mail Alumno">
                                             <input type="text" id="txttelefonooalumno" name="txttelefonooalumno" placeholder="Telefono Alumno">
                                             <input type="text" id="txtdireccionoalumno" name="txtdireccionoalumno" placeholder="Dirección Alumno">
@@ -59,19 +59,32 @@
                     <div class="tabs-panel" id="panel2">
                         <div class="row">
                             <div class="large-9 columns align-right">
-                                <form name="form2" method="post" action="TipoDocuServ">
+                                <form name="form2" method="post" action="GruposServ">
                                     <input style="display: none" type="text" id="txtdocumentoid" name="txtdocumentoid" placeholder="Lugar Acceso">
                                     <h6>Nuevo Registro</h6>
+                                    <jsp:useBean id="bean2feCtrl" class="com.sv.udb.controlador.GruposCtrl" scope="page"/>
                                     <div class="medium-6 columns">
-                                        <label>Tipo Documento
-                                            <input type="text" id="txtdocumento" name="txtdocumento" placeholder="Tipo Documento">
+                                        <label>Grupos
+                                            <select name="txtgrupo">
+                                                <c:forEach items="${bean2feCtrl.consTodo()}" var="fila2">
+                                                    <option value="<c:out value="${fila2.codiGrup}"></c:out>">${fila2.nombGrup}</option>
+                                                    </c:forEach> 
+                                            </select>
+                                        </label>
+                                    </div>
+                                    <jsp:useBean id="bean1feCtrl" class="com.sv.udb.controlador.AlumnosCtrl" scope="page"/>
+                                    <div class="medium-6 columns">
+                                        <label>Grupos
+                                            <select name="txtalumno">
+                                                <c:forEach items="${bean1feCtrl.consTodo()}" var="fila1">
+                                                    <option value="<c:out value="${fila1.codiAlum}"></c:out>">${fila1.nombAlum}</option>
+                                                    </c:forEach> 
+                                            </select>
                                         </label>
                                     </div>
                                     <div class="medium-6 columns">
                                         <label style="color:white">d</label>
                                         <input type="submit" class="success button" id="btndocumento" value="Guardar" name="frmDocu">
-                                        <input style="display: none" type="submit" id="btndocumento1" class="secondary button" value="Modificar" name="frmDocu">
-                                        <input style="display: none" type="submit" id="btndocumento2" class="alert button" value="Eliminar" name="frmDocu">
                                     </div>
                                 </form>
                             </div>
@@ -88,9 +101,9 @@
                             <tbody>
                                 <c:forEach items="${beantipogafeCtrl.consTodo()}" var="fila3">
                                     <tr>
-                                        <td id="tr31-<c:out value="${fila3.codiTipoGafe}"></c:out>">${fila3.codiTipoGafe}</td>
-                                        <td id="tr32-<c:out value="${fila3.codiTipoGafe}"></c:out>">${fila3.nombTipoGafe}</td>
-                                        <td><h><button type="button" class="success button" onclick="lugarselect3(<c:out value="${fila3.codiTipoGafe}" ></c:out>)" >Seleccionar</button></td>
+                                        <td id="tr31-<c:out value="${fila3.apelAlum}"></c:out>">${fila3.apelAlum}</td>
+                                        <td id="tr32-<c:out value="${fila3.apelAlum}"></c:out>">${fila3.apelAlum}</td>
+                                        <td><h><button type="button" class="success button" onclick="lugarselect3(<c:out value="${fila3.apelAlum}" ></c:out>)" >Seleccionar</button></td>
                                         </tr>
                                 </c:forEach> 
                                 </tbody>

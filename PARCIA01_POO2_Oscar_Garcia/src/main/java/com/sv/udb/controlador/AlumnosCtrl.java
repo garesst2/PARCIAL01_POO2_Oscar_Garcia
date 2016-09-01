@@ -40,9 +40,9 @@ public class AlumnosCtrl {
     }
     
     public List<Alumnos> consTodo() {
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("POO2PU");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("POOPU");
         EntityManager em = emf.createEntityManager();
-        Query query = em.createQuery("SELECT l FROM LugaAcce l WHERE l.esta = :esta");
+        Query query = em.createQuery("SELECT a FROM Alumnos a");
         List<Alumnos> resultList = query.getResultList();
         em.close();
         emf.close();

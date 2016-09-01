@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.sv.udb.modelo;
 
 import java.io.Serializable;
@@ -31,22 +30,15 @@ import org.codehaus.jackson.annotate.JsonIgnore;
 
 /**
  *
- * @author Laboratorio
+ * @author root
  */
 @Entity
-@Table(name = "alumnos", catalog = "parcial01_poo2_oscar_garcia", schema = "")
+@Table(name = "alumnos", catalog = "PARCIAL01_POO2_Oscar_Garcia", schema = "")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Alumnos.findAll", query = "SELECT a FROM Alumnos a"),
-    @NamedQuery(name = "Alumnos.findByCodiAlum", query = "SELECT a FROM Alumnos a WHERE a.codiAlum = :codiAlum"),
-    @NamedQuery(name = "Alumnos.findByNombAlum", query = "SELECT a FROM Alumnos a WHERE a.nombAlum = :nombAlum"),
-    @NamedQuery(name = "Alumnos.findByApelAlum", query = "SELECT a FROM Alumnos a WHERE a.apelAlum = :apelAlum"),
-    @NamedQuery(name = "Alumnos.findByFechNaciAlum", query = "SELECT a FROM Alumnos a WHERE a.fechNaciAlum = :fechNaciAlum"),
-    @NamedQuery(name = "Alumnos.findByMailAlum", query = "SELECT a FROM Alumnos a WHERE a.mailAlum = :mailAlum"),
-    @NamedQuery(name = "Alumnos.findByTeleAlum", query = "SELECT a FROM Alumnos a WHERE a.teleAlum = :teleAlum"),
-    @NamedQuery(name = "Alumnos.findByDireAlum", query = "SELECT a FROM Alumnos a WHERE a.direAlum = :direAlum"),
-    @NamedQuery(name = "Alumnos.findByGeneAlum", query = "SELECT a FROM Alumnos a WHERE a.geneAlum = :geneAlum")})
+    @NamedQuery(name = "Alumnos.findAll", query = "SELECT a FROM Alumnos a")})
 public class Alumnos implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -86,7 +78,7 @@ public class Alumnos implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "gene_alum")
-    private char geneAlum;
+    private Character geneAlum;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "codiAlum", fetch = FetchType.EAGER)
     private List<GruposAlumnos> gruposAlumnosList;
 
@@ -97,7 +89,7 @@ public class Alumnos implements Serializable {
         this.codiAlum = codiAlum;
     }
 
-    public Alumnos(Integer codiAlum, String nombAlum, String apelAlum, Date fechNaciAlum, String mailAlum, String teleAlum, String direAlum, char geneAlum) {
+    public Alumnos(Integer codiAlum, String nombAlum, String apelAlum, Date fechNaciAlum, String mailAlum, String teleAlum, String direAlum, Character geneAlum) {
         this.codiAlum = codiAlum;
         this.nombAlum = nombAlum;
         this.apelAlum = apelAlum;
@@ -164,11 +156,11 @@ public class Alumnos implements Serializable {
         this.direAlum = direAlum;
     }
 
-    public char getGeneAlum() {
+    public Character getGeneAlum() {
         return geneAlum;
     }
 
-    public void setGeneAlum(char geneAlum) {
+    public void setGeneAlum(Character geneAlum) {
         this.geneAlum = geneAlum;
     }
 
